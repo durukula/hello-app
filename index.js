@@ -4,6 +4,15 @@ const { Client } = require("pg");
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+app.get("/", (req, res) => {
+  res.json({
+    app: "Hello App",
+    status: "Running",
+    message: "Application is up. Use /hello to test database connection."
+  });
+});
+
+
 app.get("/hello", async (req, res) => {
   const client = new Client({
     host: process.env.DB_HOST,
